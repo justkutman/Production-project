@@ -1,13 +1,17 @@
 import React from 'react';
 import {Route, Routes} from "react-router-dom";
-import {AboutPage} from "pages/AboutPage";
-import {MainPage} from "pages/MainPage";
+import {routeConfig} from "shared/config/routeConfig/routeConfig";
 
 const AppRouter = () => {
     return (
         <Routes>
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/" element={<MainPage />} />
+            {Object.values(routeConfig).map(({element, path}) => (
+                <Route
+                    key={path}
+                    element={element}
+                    path={path}
+                />
+            ))}
         </Routes>
     );
 };
